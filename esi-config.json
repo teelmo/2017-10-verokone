@@ -1,0 +1,10 @@
+{
+  "htmlURL": "http://dev.yle.fi/2017/2017-10-verolaskuri/public/index.html",
+  "scripts": [
+    "http://dev.yle.fi/2017/2017-10-verolaskuri/public/js/script.min.js"
+  ],
+  "css": [
+    "http://dev.yle.fi/2017/2017-10-verolaskuri/public/css/styles.min.css"
+  ],
+  "layout": ""
+}

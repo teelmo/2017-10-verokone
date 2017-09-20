@@ -1,0 +1,25 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "jsx": false
+  },
+  "rules": {
+    "quotes": [1, "single"],
+    "indent": [1, 2],
+    "semi": [1, "always"],
+    "no-irregular-whitespace": [1, {
+      "skipStrings": true
+    }],
+    "no-trailing-spaces": [1, {
+      "skipBlankLines": false
+    }],
+    "no-whitespace-before-property": [1],
+    "no-tabs": [1],
+    "dot-notation": 1
+  }
+}
