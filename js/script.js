@@ -189,7 +189,7 @@
       }
       else {
         let net_income = plusApp.salary * 12 - tax;
-        $('<h3>Maksat tuloveroja ja pakollisia maksuja ' + plusApp.formatNr(plusApp.roundNr(tax, 0)) + ' € vuonna 2017. Nettotulosi ovat siis ' + plusApp.formatNr(plusApp.roundNr(net_income, 0)) + ' €, josta maksat kulutusveroa ' + plusApp.formatNr(plusApp.roundNr(net_income * 0.2, 0)) + ' €.</h3>').appendTo(result_container);
+        $('<h3>Maksat tuloveroja ja pakollisia maksuja ' + plusApp.formatNr(plusApp.roundNr(tax, 0)) + ' € vuonna 2017, joten nettovuositulosi on ' + plusApp.formatNr(plusApp.roundNr(net_income, 0)) + ' €, josta maksat kulutusveroa ' + plusApp.formatNr(plusApp.roundNr(net_income * 0.2, 0)) + ' €.</h3>').appendTo(result_container);
         let tax_lastyear = plusApp.calculateTax(plusApp.data.municipalities[plusApp.municipality_id].tax_percent - plusApp.data.municipalities[plusApp.municipality_id].tax_percent_change);
         let meta = plusApp.meta;
         let vuositulot = plusApp.salary * 12;
