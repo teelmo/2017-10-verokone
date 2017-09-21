@@ -102,6 +102,9 @@
       $('<div class="deduction"><span class="label">Tulonhankkimisvähennys</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(temp), 0)  + ' €</span></div>').appendTo(plusApp.meta);
       ansiotulot = (vuositulot > 750) ? ansiotulot - temp : ansiotulot - temp;
 
+      // Yle vero.
+      let ylevero = (ansiotulot * 0.0068 < 70) ? 0 : Math.min(ansiotulot * 0.0068, 143); // 0.68%
+
       // Työeläkevakuutusmaksu.
       let tyoelakevakuutusmaksu = vuositulot * 0.0615; // 6.15%
       ansiotulot = ansiotulot - tyoelakevakuutusmaksu;
@@ -156,16 +159,16 @@
       if (vuositulot > 33000) {
         let valtioveron_alaiset_ansiotulot_max = (valtioveron_alaiset_ansiotulot - 2500) * 0.12;
         valtioveron_alaiset_ansiotulot_max = (valtioveron_alaiset_ansiotulot_max > 1420) ? 1420 : valtioveron_alaiset_ansiotulot_max;
-        let over = (vuositulot - 750) - 33000;
-        enimmaistyotulovahennys = valtioveron_alaiset_ansiotulot_max - (over * 0.0151);
+        enimmaistyotulovahennys = valtioveron_alaiset_ansiotulot_max - ((vuositulot - 750 - 33000) * 0.0151);
       }
       else {
         enimmaistyotulovahennys = 1420;
       }
       $('<div><span class="label">Enimmäisvähennys valtionverotuksessa</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(enimmaistyotulovahennys), 0)  + ' €</span></div>').appendTo(plusApp.meta);
+      let tyotulovahennys = Math.max(enimmaistyotulovahennys - valtiovero, 0);
 
-      let tyotulovahennys = enimmaistyotulovahennys - valtiovero;
-      tyotulovahennys = (tyotulovahennys < 0) ? 0 : tyotulovahennys;
+      // Valtion verot.
+      valtiovero = Math.max(valtiovero - enimmaistyotulovahennys - tyotulovahennys, 0);
 
       ansiotulot = ansiotulot - ansiotulovahennys - perusvahennys;
       $('<div class="effective_income"><span class="label">Kunnallisverotuksessa verotettava tulo</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(ansiotulot), 0)  + ' € </span></div>').appendTo(plusApp.meta);
@@ -173,8 +176,7 @@
       let kuntavero = ansiotulot * (tax_percent / 100) - tyotulovahennys;
       $('<div><span class="label">Kunnallisvero</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(kuntavero), 0)  + ' €</span></div>').appendTo(plusApp.meta);
       $('<div><span class="label">Valtion verot</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(valtiovero), 0)  + ' €</span></div>').appendTo(plusApp.meta);
-      // Yle vero.
-      let ylevero = (ansiotulot * 0.0068 < 70) ? 0 : Math.min(ansiotulot * 0.0068, 143); // 0.68%
+
       $('<div><span class="label">Ylevero</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(ylevero), 0) + ' €</span></div>').appendTo(plusApp.meta);
       return tyoelakevakuutusmaksu + tyottomyysvakuutusmaksu + sairausvakuutuksen_paivarahamaksu + kuntavero + valtiovero + ylevero;
     },
@@ -188,7 +190,7 @@
       else {
         $('<h3>Maksat tuloveroja ja pakollisia maksuja ' + plusApp.formatNr(plusApp.roundNr(tax, 0)) + ' € vuonna 2017</h3>').appendTo(result_container);
         let tax_lastyear = plusApp.calculateTax(plusApp.data.municipalities[plusApp.municipality_id].tax_percent - plusApp.data.municipalities[plusApp.municipality_id].tax_percent_change);
-        var meta = plusApp.meta;
+        let meta = plusApp.meta;
         let vuositulot = plusApp.salary * 12;
         if (tax !== tax_lastyear) {
           if (tax > tax_lastyear) {
@@ -241,7 +243,6 @@
     },
     initEvents: () => {
       $(window).on('resize', plusApp.getScale);
-      // Click.
       plus.on('click', '.input_container .button', () => {
         plusApp.municipality = $('.municipality_input', plus).val();
         plusApp.salary = $('.salary_input', plus).val();
