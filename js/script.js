@@ -98,9 +98,10 @@
       let ansiotulot = vuositulot;
 
       // Tulonhankkimisvähennys
-      let temp = (vuositulot > 750) ? 750 : vuositulot;
+      let tulonhankkimisvahennys = 750;
+      let temp = (vuositulot > tulonhankkimisvahennys) ? tulonhankkimisvahennys : vuositulot;
       $('<div class="deduction"><span class="label">Tulonhankkimisvähennys</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(temp), 0)  + ' €</span></div>').appendTo(plusApp.meta);
-      ansiotulot = (vuositulot > 750) ? ansiotulot - temp : ansiotulot - temp;
+      ansiotulot = (vuositulot > tulonhankkimisvahennys) ? ansiotulot - temp : ansiotulot - temp;
 
       // Yle vero.
       let ylevero = (ansiotulot * 0.0068 < 70) ? 0 : Math.min(ansiotulot * 0.0068, 143); // 0.68%
@@ -130,7 +131,7 @@
       // Ansiotulovähennys.
       let ansiotulovahennys = (7230 - 2500) * 0.51 + (vuositulot - 7230) * 0.28;
       ansiotulovahennys = (ansiotulovahennys > 3570) ? 3570 : ansiotulovahennys;
-      ansiotulovahennys = ansiotulovahennys - (((vuositulot - 750) - 14000) * 0.045);
+      ansiotulovahennys = ansiotulovahennys - (((vuositulot - tulonhankkimisvahennys) - 14000) * 0.045);
       ansiotulovahennys = (ansiotulovahennys < 0) ? 0 : ansiotulovahennys;
       $('<div class="deduction"><span class="label">Ansiotulovähennys</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(ansiotulovahennys), 0)  + ' €</span></div>').appendTo(plusApp.meta);
 
@@ -156,10 +157,10 @@
 
       // Työtulovähennys.
       let enimmaistyotulovahennys;
-      if (vuositulot > 33000) {
+      if ((vuositulot - tulonhankkimisvahennys) > 33000) {
         let valtioveron_alaiset_ansiotulot_max = (valtioveron_alaiset_ansiotulot - 2500) * 0.12;
         valtioveron_alaiset_ansiotulot_max = (valtioveron_alaiset_ansiotulot_max > 1420) ? 1420 : valtioveron_alaiset_ansiotulot_max;
-        enimmaistyotulovahennys = valtioveron_alaiset_ansiotulot_max - ((vuositulot - 750 - 33000) * 0.0151);
+        enimmaistyotulovahennys = Math.max(valtioveron_alaiset_ansiotulot_max - ((vuositulot - tulonhankkimisvahennys - 33000) * 0.0151), 0);
       }
       else {
         enimmaistyotulovahennys = 1420;
