@@ -312,5 +312,66 @@
     "981": { "name_fi":"Ypäjä", "id":"981", "province":"FI-06", "population":2411, "tax_percent":21.5, "tax_percent_change":0.5},
     "989": { "name_fi":"Ähtäri", "id":"989", "province":"FI-03", "population":6068, "tax_percent":22, "tax_percent_change":0},
     "992": { "name_fi":"Äänekoski", "id":"992", "province":"FI-08", "population":19646, "tax_percent":21.5, "tax_percent_change":0}
-  }
+  },
+  "spending_categories":[{
+    "title":"Yleinen julkishallinto",
+    "share":"0.001140806731",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Puolustus",
+    "share":"0.0002421335161",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Yleinen järjestys ja turvallisuus",
+    "share":"0.0002126282527",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Elinkeinoelämän edistäminen",
+    "share":"0.0007892182057",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Ympäristönsuojelu",
+    "share":"0.00003312203758",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Asuminen ja yhdyskunnat",
+    "share":"0.00003454971161",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Terveydenhuolto",
+    "share":"0.001274151486",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Vapaa-aika, kulttuuri ja uskonto",
+    "share":"0.0002614547047",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Koulutus",
+    "share":"0.001150039023",
+    "subcategories":[{
+      "title":""
+    }]
+  },{
+    "title":"Sosiaaliturva",
+    "share":"0.004861896332",
+    "subcategories":[{
+      "title":""
+    }]
+  }]
 }

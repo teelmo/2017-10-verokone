@@ -107,7 +107,8 @@
       let ylevero = (ansiotulot * 0.0068 < 70) ? 0 : Math.min(ansiotulot * 0.0068, 143); // 0.68%
 
       // Työeläkevakuutusmaksu.
-      let tyoelakevakuutusmaksu = vuositulot * 0.0615; // 6.15%
+      let percent = ($('.age_input', plus).is(':checked')) ? 0.0765 : 0.0615 ; // 7.65% || 6.15%
+      let tyoelakevakuutusmaksu = vuositulot * percent;
       ansiotulot = ansiotulot - tyoelakevakuutusmaksu;
       $('<div class="deduction"><span class="label">Työeläkevakuutusmaksu</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(tyoelakevakuutusmaksu), 0) + ' €</span></div>').appendTo(plusApp.meta);
 
