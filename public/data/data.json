@@ -314,6 +314,87 @@
     "992":{"name_fi":"Äänekoski","id":"992","province":"FI-08","population":19646,"tax_percent":21.5,"tax_percent_change":0}
   },
   "spending_categories":[{
+    "title":"Sosiaaliturva",
+    "share":0.4861896332,
+    "subcategories":[{
+      "title":"Sairaus ja toimintarajoitteisuus (Y)",
+      "share":0.0656254164
+    },{
+      "title":"Työeläkkeet",
+      "share":0.2062608265
+    },{
+      "title":"Muu vanhuuteen liittyvä sosiaaliturva (mm. takuu- ja kansaneläkkeet, kotipalvelut, omaishoidon tuki)",
+      "share":0.04879789846
+    },{
+      "title":"Lesket ja muut edunsaajat (Y)",
+      "share":0.01524755868
+    },{
+      "title":"Perhe ja lapset (Y)",
+      "share":0.06048578988
+    },{
+      "title":"Työttömyys (Y)",
+      "share":0.05287152837
+    },{
+      "title":"Asuminen (Y)",
+      "share":0.008737365085
+    },{
+      "title":"Sosiaalinen syrjäytyminen, muualla luokittelematon (Y)",
+      "share":0.0177697828
+    },{
+      "title":"Sosiaaliturvan tutkimus ja kehittäminen",
+      "share":0.0002093921916
+    },{
+      "title":"Sosiaaliturva, muualla luokittelematon",
+      "share":0.01018407477
+    }]
+  },{
+    "title":"Terveydenhuolto",
+    "share":0.1274151486,
+    "subcategories":[{
+      "title":"Lääkevalmisteet, lääkintälaitteet ja välineet (Y)",
+      "share":0.01332495765
+    },{
+      "title":"Avohoitopalvelut (Y)",
+      "share":0.05763995964
+    },{
+      "title":"Sairaalapalvelut eli laitoshoito (Y)",
+      "share":0.05400414977
+    },{
+      "title":"Yleiset terveydenhuoltopalvelut (Y)",
+      "share":0.0002284278454
+    },{
+      "title":"Terveydenhuoltoalan tutkimus ja kehittäminen",
+      "share":0.00143719186
+    },{
+      "title":"Terveydenhuolto, muualla luokittelematon",
+      "share":0.000780461805
+    }]
+  },{
+    "title":"Koulutus",
+    "share":0.1150039023,
+    "subcategories":[{
+      "title":"Esiasteen ja alemman perusasteen koulutus (Y)",
+      "share":0.02486056384
+    },{
+      "title":"Ylemmän perusasteen ja keskiasteen koulutus (Y)",
+      "share":0.05257647574
+    },{
+      "title":"Korkea-asteen koulutus (Y)",
+      "share":0.03125654351
+    },{
+      "title":"Tutkintoon johtamaton koulutus (Y)",
+      "share":0.004768431272
+    },{
+      "title":"Koulutuksen tukipalvelut opiskelijoille (Y)",
+      "share":0.0004473378638
+    },{
+      "title":"Koulutuksen tutkimus ja kehittäminen",
+      "share":0.0001808387109
+    },{
+      "title":"Koulutus, muualla luokittelematon",
+      "share":0.0009137113814
+    }]
+  },{
     "title":"Yleinen julkishallinto",
     "share":0.1140806731,
     "subcategories":[{
@@ -337,6 +418,47 @@
     },{
       "title":"Julkisen velan hoitoon liittyvät taloustoimet",
       "share":0.02534597301
+    }]
+  },{
+    "title":"Elinkeinoelämän edistäminen",
+    "share":0.07892182057,
+    "subcategories":[{
+      "title":"Yleiset talouteen ja kauppaan liittyvät tehtävät sekä työvoimapalvelut",
+      "share":0.01109778615
+    },{
+      "title":"Maa, metsä, kala - ja riistatalous",
+      "share":0.01401975901
+    },{
+      "title":"Polttoaine- ja energiahuolto",
+      "share":0.002874383721
+    },{
+      "title":"Kaivostoiminta, teollisuus ja rakentaminen",
+      "share":0.00342641768
+    },{
+      "title":"Liikenne",
+      "share":0.04115508347
+    },{
+      "title":"Elinkeinoelämän tutkimus ja kehittäminen",
+      "share":0.006405497497
+    }]
+  },{
+    "title":"Vapaa-aika, kulttuuri ja uskonto",
+    "share":0.02614547047,
+    "subcategories":[{
+      "title":"Virkistys- ja urheilupalvelut (Y)",
+      "share":0.008071117203
+    },{
+      "title":"Kulttuuripalvelut (Y)",
+      "share":0.009860468658
+    },{
+      "title":"Radio, televisio- ja julkaisutoiminta",
+      "share":0.004806502579
+    },{
+      "title":"Uskonnollisten ja aatteellisten yhteisöjen tukeminen",
+      "share":0.003378828546
+    },{
+      "title":"Vapaa-ajan, kulttuurin ja uskonnon tutkimus ja kehittäminen",
+      "share":0.00002855348067
     }]
   },{
     "title":"Puolustus",
@@ -377,26 +499,17 @@
       "share":0.001208764015
     }]
   },{
-    "title":"Elinkeinoelämän edistäminen",
-    "share":0.07892182057,
+    "title":"Asuminen ja yhdyskunnat",
+    "share":0.003454971161,
     "subcategories":[{
-      "title":"Yleiset talouteen ja kauppaan liittyvät tehtävät sekä työvoimapalvelut",
-      "share":0.01109778615
+      "title":"Asuinolojen kehittäminen",
+      "share":0.0008566044201
     },{
-      "title":"Maa, metsä, kala - ja riistatalous",
-      "share":0.01401975901
+      "title":"Yhdyskuntakehitys",
+      "share":0.003340757238
     },{
-      "title":"Polttoaine- ja energiahuolto",
-      "share":0.002874383721
-    },{
-      "title":"Kaivostoiminta, teollisuus ja rakentaminen",
-      "share":0.00342641768
-    },{
-      "title":"Liikenne",
-      "share":0.04115508347
-    },{
-      "title":"Elinkeinoelämän tutkimus ja kehittäminen",
-      "share":0.006405497497
+      "title":"Vesihuolto",
+      "share":0.0001618030571
     }]
   },{
     "title":"Ympäristönsuojelu",
@@ -416,119 +529,6 @@
     },{
       "title":"Ympäristön suojelu, muualla luokittelematon",
       "share":0.001094550092
-    }]
-  },{
-    "title":"Asuminen ja yhdyskunnat",
-    "share":0.003454971161,
-    "subcategories":[{
-      "title":"Asuinolojen kehittäminen",
-      "share":0.0008566044201
-    },{
-      "title":"Yhdyskuntakehitys",
-      "share":0.003340757238
-    },{
-      "title":"Vesihuolto",
-      "share":0.0001618030571
-    }]
-  },{
-    "title":"Terveydenhuolto",
-    "share":0.1274151486,
-    "subcategories":[{
-      "title":"Lääkevalmisteet, lääkintälaitteet ja välineet (Y)",
-      "share":0.01332495765
-    },{
-      "title":"Avohoitopalvelut (Y)",
-      "share":0.05763995964
-    },{
-      "title":"Sairaalapalvelut eli laitoshoito (Y)",
-      "share":0.05400414977
-    },{
-      "title":"Yleiset terveydenhuoltopalvelut (Y)",
-      "share":0.0002284278454
-    },{
-      "title":"Terveydenhuoltoalan tutkimus ja kehittäminen",
-      "share":0.00143719186
-    },{
-      "title":"Terveydenhuolto, muualla luokittelematon",
-      "share":0.000780461805
-    }]
-  },{
-    "title":"Vapaa-aika, kulttuuri ja uskonto",
-    "share":0.02614547047,
-    "subcategories":[{
-      "title":"Virkistys- ja urheilupalvelut (Y)",
-      "share":0.008071117203
-    },{
-      "title":"Kulttuuripalvelut (Y)",
-      "share":0.009860468658
-    },{
-      "title":"Radio, televisio- ja julkaisutoiminta",
-      "share":0.004806502579
-    },{
-      "title":"Uskonnollisten ja aatteellisten yhteisöjen tukeminen",
-      "share":0.003378828546
-    },{
-      "title":"Vapaa-ajan, kulttuurin ja uskonnon tutkimus ja kehittäminen",
-      "share":0.00002855348067
-    }]
-  },{
-    "title":"Koulutus",
-    "share":0.1150039023,
-    "subcategories":[{
-      "title":"Esiasteen ja alemman perusasteen koulutus (Y)",
-      "share":0.02486056384
-    },{
-      "title":"Ylemmän perusasteen ja keskiasteen koulutus (Y)",
-      "share":0.05257647574
-    },{
-      "title":"Korkea-asteen koulutus (Y)",
-      "share":0.03125654351
-    },{
-      "title":"Tutkintoon johtamaton koulutus (Y)",
-      "share":0.004768431272
-    },{
-      "title":"Koulutuksen tukipalvelut opiskelijoille (Y)",
-      "share":0.0004473378638
-    },{
-      "title":"Koulutuksen tutkimus ja kehittäminen",
-      "share":0.0001808387109
-    },{
-      "title":"Koulutus, muualla luokittelematon",
-      "share":0.0009137113814
-    }]
-  },{
-    "title":"Sosiaaliturva",
-    "share":0.4861896332,
-    "subcategories":[{
-      "title":"Sairaus ja toimintarajoitteisuus (Y)",
-      "share":0.0656254164
-    },{
-      "title":"Työeläkkeet",
-      "share":0.2062608265
-    },{
-      "title":"Muu vanhuuteen liittyvä sosiaaliturva (mm. takuu- ja kansaneläkkeet, kotipalvelut, omaishoidon tuki)",
-      "share":0.04879789846
-    },{
-      "title":"Lesket ja muut edunsaajat (Y)",
-      "share":0.01524755868
-    },{
-      "title":"Perhe ja lapset (Y)",
-      "share":0.06048578988
-    },{
-      "title":"Työttömyys (Y)",
-      "share":0.05287152837
-    },{
-      "title":"Asuminen (Y)",
-      "share":0.008737365085
-    },{
-      "title":"Sosiaalinen syrjäytyminen, muualla luokittelematon (Y)",
-      "share":0.0177697828
-    },{
-      "title":"Sosiaaliturvan tutkimus ja kehittäminen",
-      "share":0.0002093921916
-    },{
-      "title":"Sosiaaliturva, muualla luokittelematon",
-      "share":0.01018407477
     }]
   }]
 }

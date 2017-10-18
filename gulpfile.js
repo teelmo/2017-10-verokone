@@ -77,7 +77,7 @@ gulp.task('build', () => {
 // Build Html.
 gulp.task('build-html', () => {
   if (args.env === 'prod') {
-    return gulp.src(['./index.html'])
+    gulp.src(['./index.html'])
       .pipe(htmlmin({
         collapseWhitespace:true
       }))
@@ -85,10 +85,15 @@ gulp.task('build-html', () => {
       .pipe(eval(live));
   }
   else {
-    return gulp.src(['./index.html'])
+    gulp.src(['./index.html'])
       .pipe(gulp.dest('./public'))
       .pipe(eval(live));
   }
+  gulp.src(['./index.html'])
+    .pipe(insert.prepend('<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js" type="text/javascript"></script><link href="../css/styles.min.css" rel="stylesheet" type="text/css"></head><body>'))
+    .pipe(insert.append('</body><script src="../js/script.min.js" type="text/javascript"></script></html>'))
+    .pipe(gulp.dest('./public/standalone'));
+  return true;
 });
 
 // Build CSS.
