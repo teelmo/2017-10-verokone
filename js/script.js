@@ -46,6 +46,7 @@
     },
     getData: () => {
       $.getJSON(plusApp.path + 'data/data.json', (data) => {
+        $('.input_container .button', plus).prop('disabled', false);
         plusApp.data = data;
         plusApp.municipalities = [];
         $.each(plusApp.data.municipalities, (municipality_id, municipality) => {
@@ -107,8 +108,7 @@
       let ylevero = (ansiotulot * 0.0068 < 70) ? 0 : Math.min(ansiotulot * 0.0068, 143); // 0.68%
 
       // Työeläkevakuutusmaksu.
-      let percent = ($('.age_input', plus).is(':checked')) ? 0.0765 : 0.0615 ; // 7.65% || 6.15%
-      let tyoelakevakuutusmaksu = vuositulot * percent;
+      let tyoelakevakuutusmaksu = vuositulot * (($('.age_input', plus).is(':checked')) ? 0.0765 : 0.0615);
       ansiotulot = ansiotulot - tyoelakevakuutusmaksu;
       $('<div class="deduction"><span class="label">Työeläkevakuutusmaksu</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(tyoelakevakuutusmaksu), 0) + ' €</span></div>').appendTo(plusApp.meta);
 
@@ -183,78 +183,66 @@
       return tyoelakevakuutusmaksu + tyottomyysvakuutusmaksu + sairausvakuutuksen_paivarahamaksu + kuntavero + valtiovero + ylevero;
     },
     printResults: () => {
-      let result_container = $('.result_container', plus).empty().show();
+      let result_container = $('.result_container', plus).empty();
       let tax = plusApp.calculateTax(plusApp.data.municipalities[plusApp.municipality_id].tax_percent);
       if (tax < 0) {
         $('<h3>Et maksa veroja</h3>').appendTo(result_container);
         $('<p>Tulosi ovat niin alhaiset, että et maksa lainkaan veroja.</p>').appendTo(result_container);
       }
       else {
-        let net_income = plusApp.salary * 12 - tax;
-        let total_tax = tax + net_income * 0.2;
-        $('<h3>Vuonna 2017 tuloistasi yhteiskunnalle menee ' + plusApp.formatNr(plusApp.roundNr(tax, 0)) + '&nbsp;€. Sinulle jää kulutettavaksi ' + plusApp.formatNr(plusApp.roundNr(net_income, 0)) + '&nbsp;€. Tästä maksat kulutusveroa ' + plusApp.formatNr(plusApp.roundNr(net_income * 0.2, 0)) + ' €.</h3>').appendTo(result_container);
+        let vuositulot = plusApp.salary * 12;
+        let net_income = vuositulot - tax;
+        let percent = ($('.age_input', plus).is(':checked')) ? 0.2024 : 0.2174;
+        let total_tax = tax + net_income * 0.2 + (plusApp.salary * 12) * percent;
+        $('<div class="result_wrapper start"><div class="label">Vuositulosi</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(vuositulot), 0) + '&nbsp;€</div></div>').appendTo(result_container);
+        $('<div class="result_wrapper"><div class="label">&bullet; Verot ja maksut bruttopalkasta</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(tax, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
+        $('<div class="result_wrapper"><div class="label">&bullet; Arvonlisä- ja valmistevero nettopalkasta</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(net_income * 0.2, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
+        $('<div class="result_wrapper"><div class="label">&bullet; Työnantajasi maksaa</div><div class="value">' + plusApp.formatNr(plusApp.roundNr((plusApp.salary * 12) * percent)) + '&nbsp;€</div></div>').appendTo(result_container);
+        $('<div class="result_wrapper total"><div class="label">Yhteensä yhteiskunnalle</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(total_tax, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
+        // $('<h4>Vuositulosi ovat <strong></strong>.</h4><h3>Palkastasi yhteiskunnalle menee vuodessa <strong></strong><h3><h4>Sinulle jää käteen <strong>' + plusApp.formatNr(plusApp.roundNr(net_income, 0)) + '&nbsp;€</strong>. Käyttäessäsi tämän summan kokonaisuudessaan yhteiskunta kerää  <strong></strong>. Lisäksi työnantajasi maksaa palkkasi perusteella <strong></strong> veronluonteisia sosiaalivakuutusmaksuja.</h4>').appendTo(result_container);
         let tax_lastyear = plusApp.calculateTax(plusApp.data.municipalities[plusApp.municipality_id].tax_percent - plusApp.data.municipalities[plusApp.municipality_id].tax_percent_change);
         let meta = plusApp.meta;
-        let vuositulot = plusApp.salary * 12;
-        // if (tax !== tax_lastyear) {
-        //   if (tax > tax_lastyear) {
-        //     $('<p>Todellinen eli efektiivinen veroprosenttisi vähennysten jälkeen on <span class="value">' + plusApp.formatNr(plusApp.roundNr((tax / vuositulot) * 100, 2)) + '</span>. Veroprosentti kunnassa ' + plusApp.data.municipalities[plusApp.municipality_id].name_fi + ' on <span class="value">' + plusApp.formatNr(plusApp.data.municipalities[plusApp.municipality_id].tax_percent) + '</span>. Vuodelle 2017 ' + plusApp.capitalizeFirstLetter(plusApp.municipality) + ' nosti kunnallisveroaan. Vuoden 2016 veroprosentilla maksaisit ' + plusApp.formatNr(plusApp.roundNr(tax_lastyear, 0)) + ' €.</p>').appendTo(result_container);
-        //   }
-        //   else {
-        //     $('<p>Todellinen eli efektiivinen veroprosenttisi vähennysten jälkeen on <span class="value">' + plusApp.formatNr(plusApp.roundNr((tax / vuositulot) * 100, 2)) + '</span>. Veroprosentti kunnassa ' + plusApp.data.municipalities[plusApp.municipality_id].name_fi + ' on <span class="value">' + plusApp.formatNr(plusApp.data.municipalities[plusApp.municipality_id].tax_percent) + '</span>. Vuodelle 2017 ' + plusApp.capitalizeFirstLetter(plusApp.municipality) + ' laski kunnallisveroaan. Vuoden 2016 veroprosentilla maksaisit ' + plusApp.formatNr(plusApp.roundNr(tax_lastyear, 0)) + ' €.</p>').appendTo(result_container);
-        //   }
-        // }
-        // else {
-        //   $('<p>Todellinen eli efektiivinen veroprosenttisi vähennysten jälkeen on <span class="value">' + plusApp.formatNr(plusApp.roundNr((tax / vuositulot) * 100, 2)) + '</span>. Veroprosentti kunnassa ' + plusApp.data.municipalities[plusApp.municipality_id].name_fi + ' on <span class="value">' + plusApp.formatNr(plusApp.data.municipalities[plusApp.municipality_id].tax_percent) + '</span>.</p>').appendTo(result_container);
-        // }
-        // if (plusApp.municipality_id === '170') {
-        //   $('<p>Maksat Suomen alhaisinta kunnallisveroa. Eniten maksaisit Savonlinnassa ja Jämijärvellä, ' + plusApp.formatNr(plusApp.roundNr(plusApp.calculateTax(22.5), 0)) + ' €.</p>').appendTo(result_container);
-        // }
-        // else if (plusApp.municipality_id === '740' || plusApp.municipality_id  === '181') {
-        //   $('<p>Maksat Suomen korkeinta kunnallisveroa. Vähiten maksaisit Jomalassa, ' + plusApp.formatNr(plusApp.roundNr(plusApp.calculateTax(16.5), 0)) + ' €.</p>').appendTo(result_container);
-        // }
-        // else {
-        //   $('<p>Vähiten maksaisit Ahvenanmaalla Jomalassa, ' + plusApp.formatNr(plusApp.roundNr(plusApp.calculateTax(16.5), 0)) + ' €. Eniten Jämijärvellä ja Savonlinnassa, ' + plusApp.formatNr(plusApp.roundNr(plusApp.calculateTax(22.5), 0)) + ' €.</p>').appendTo(result_container);
-        // }
         $('<div class="more_container"><button class="more active">Näytä laskelmat</button></div>').appendTo(result_container);
         meta.appendTo(result_container);
         // Spendings.
         let spendings_container = $('<div class="spendings_container"></div>').appendTo(result_container);
-        $('<h3>Näin maksamasi verot kulutetaan</h3>').appendTo(spendings_container);
+        $('<h3>Näin yhteiskunta käyttää rahat</h3>').appendTo(spendings_container);
         $.each(plusApp.data.spending_categories, (i, spending_category) => {
           let spending_category_container = $('<div class="spending_category_container"></div>').appendTo(spendings_container);
-          $('<div class="category_container main" data-sub-container=".spending_sub_category_container_' + i + '"><div class="category_name">' + spending_category.title + '</div><div class="category_share">' + plusApp.formatNr(plusApp.roundNr(spending_category.share * total_tax, 0)) + ' €</div></div>').appendTo(spending_category_container);
+          $('<div class="category_container main" data-sub-container=".spending_sub_category_container_' + i + '"><div class="category_name">' + spending_category.title + '</div><div class="category_share">' + plusApp.formatNr(plusApp.roundNr(spending_category.share * total_tax, 0)) + '&nbsp;€</div></div>').appendTo(spending_category_container);
           let spending_sub_category_container = $('<div class="spending_sub_category_container spending_sub_category_container_' + i + '"></div>').appendTo(spending_category_container);
           $.each(spending_category.subcategories, (j, category) => {
-            $('<div class="category_container sub"><div class="category_name">' + category.title + '</div><div class="category_share">' + plusApp.formatNr(plusApp.roundNr(category.share * total_tax, 0)) + ' €</div></div>').appendTo(spending_sub_category_container);
+            $('<div class="category_container sub"><div class="category_name">' + category.title + '</div><div class="category_share">' + plusApp.formatNr(plusApp.roundNr(category.share * total_tax, 0)) + '&nbsp;€</div></div>').appendTo(spending_sub_category_container);
 
           });
         });
         // Neigbors.
-        let neighbors_container = $('<div class="neighbors_container"></div>').appendTo(result_container);
-        $('<h3>Naapurikunnat</h3>').appendTo(neighbors_container);
-        let table_container = $('<table></table>').appendTo(neighbors_container);
-        $('<thead><tr><th>Kunta</th><th class="number">Vero-%</th><th class="number">€/12 kk</th><th class="number">Erotus</th></tr></thead>').appendTo(table_container);
-        let tbody_container = $('<tbody></tbody>').appendTo(table_container);
-        $.each(plusApp.data.neighbors[plusApp.municipality_id], (i, el) => {
-          let tr_container = $('<tr></tr>').appendTo(tbody_container);
-          if (plusApp.data.municipalities[el]) {
-            $('<td>' + plusApp.data.municipalities[el].name_fi + '</td>').appendTo(tr_container);
-            $('<td class="number">' + plusApp.formatNr(plusApp.data.municipalities[el].tax_percent) + '</td>').appendTo(tr_container);
-            $('<td class="number">' + plusApp.formatNr(plusApp.roundNr(plusApp.calculateTax(plusApp.data.municipalities[el].tax_percent), 0)) + '</td>').appendTo(tr_container);
-            let difference = plusApp.calculateTax(plusApp.data.municipalities[el].tax_percent) - tax;
-            if (difference < 0) {
-              $('<td class="number">' + plusApp.formatNr(plusApp.roundNr((difference), 0)) + ' €</td>').appendTo(tr_container);
-            }
-            else if (difference > 0) {
-              $('<td class="number">+' + plusApp.formatNr(plusApp.roundNr((difference), 0)) + ' €</td>').appendTo(tr_container);
-            }
-            else {
-              $('<td class="number">–</td>').appendTo(tr_container);
-            }
-          }
-        });
+        // let neighbors_container = $('<div class="neighbors_container"></div>').appendTo(result_container);
+        // $('<h3>Naapurikunnat</h3>').appendTo(neighbors_container);
+        // let table_container = $('<table></table>').appendTo(neighbors_container);
+        // $('<thead><tr><th>Kunta</th><th class="number">Vero-%</th><th class="number">€/12 kk</th><th class="number">Erotus</th></tr></thead>').appendTo(table_container);
+        // let tbody_container = $('<tbody></tbody>').appendTo(table_container);
+        // $.each(plusApp.data.neighbors[plusApp.municipality_id], (i, el) => {
+        //   let tr_container = $('<tr></tr>').appendTo(tbody_container);
+        //   if (plusApp.data.municipalities[el]) {
+        //     $('<td>' + plusApp.data.municipalities[el].name_fi + '</td>').appendTo(tr_container);
+        //     $('<td class="number">' + plusApp.formatNr(plusApp.data.municipalities[el].tax_percent) + '</td>').appendTo(tr_container);
+        //     $('<td class="number">' + plusApp.formatNr(plusApp.roundNr(plusApp.calculateTax(plusApp.data.municipalities[el].tax_percent), 0)) + '</td>').appendTo(tr_container);
+        //     let difference = plusApp.calculateTax(plusApp.data.municipalities[el].tax_percent) - tax;
+        //     if (difference < 0) {
+        //       $('<td class="number">' + plusApp.formatNr(plusApp.roundNr((difference), 0)) + ' €</td>').appendTo(tr_container);
+        //     }
+        //     else if (difference > 0) {
+        //       $('<td class="number">+' + plusApp.formatNr(plusApp.roundNr((difference), 0)) + ' €</td>').appendTo(tr_container);
+        //     }
+        //     else {
+        //       $('<td class="number">–</td>').appendTo(tr_container);
+        //     }
+        //   }
+        // });
       }
+      $('.result_wrapper .value', plus).hide().fadeIn(300);
+      result_container.slideDown(500);
     },
     initEvents: () => {
       $(window).on('resize', plusApp.getScale);

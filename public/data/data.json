@@ -317,144 +317,144 @@
     "title":"Sosiaaliturva",
     "share":0.4861896332,
     "subcategories":[{
-      "title":"Sairaus ja toimintarajoitteisuus (Y)",
-      "share":0.0656254164
-    },{
       "title":"Työeläkkeet",
       "share":0.2062608265
+    },{
+      "title":"Sairaus ja toimintarajoitteisuus (mm. sairaus- ja tapaturmavakuutuksen päivärahat, työkyvyttömyyseläkkeet, kuntoutusrahat, vammaispalvelut)",
+      "share":0.0656254164
+    },{
+      "title":"Perhe ja lapset (mm. vanhempainrahat, lapsilisät, kotihoidon tuki, lasten päivähoito)",
+      "share":0.06048578988
+    },{
+      "title":"Työttömyysturva (mm. peruspäiväraha, työmarkkinatuki)",
+      "share":0.05287152837
     },{
       "title":"Muu vanhuuteen liittyvä sosiaaliturva (mm. takuu- ja kansaneläkkeet, kotipalvelut, omaishoidon tuki)",
       "share":0.04879789846
     },{
-      "title":"Lesket ja muut edunsaajat (Y)",
-      "share":0.01524755868
-    },{
-      "title":"Perhe ja lapset (Y)",
-      "share":0.06048578988
-    },{
-      "title":"Työttömyys (Y)",
-      "share":0.05287152837
-    },{
-      "title":"Asuminen (Y)",
-      "share":0.008737365085
-    },{
-      "title":"Sosiaalinen syrjäytyminen, muualla luokittelematon (Y)",
+      "title":"Sosiaalinen syrjäytyminen, muualla luokittelematon (mm. toimeentulotuki, pakolaishuolto, päihdehuolto)",
       "share":0.0177697828
     },{
-      "title":"Sosiaaliturvan tutkimus ja kehittäminen",
-      "share":0.0002093921916
+      "title":"Lesket ja muut edunsaajat (mm. perhe-eläkkeet)",
+      "share":0.01524755868
     },{
       "title":"Sosiaaliturva, muualla luokittelematon",
       "share":0.01018407477
+    },{
+      "title":"Yleinen asumistuki",
+      "share":0.008737365085
+    },{
+      "title":"Sosiaaliturvan tutkimus ja kehittäminen",
+      "share":0.0002093921916
     }]
   },{
     "title":"Terveydenhuolto",
     "share":0.1274151486,
     "subcategories":[{
-      "title":"Lääkevalmisteet, lääkintälaitteet ja välineet (Y)",
-      "share":0.01332495765
-    },{
-      "title":"Avohoitopalvelut (Y)",
+      "title":"Lääkäreiden, hammaslääkäreiden ja muiden terveydenhuollon ammattilaisten avohoitopalvelut",
       "share":0.05763995964
     },{
-      "title":"Sairaalapalvelut eli laitoshoito (Y)",
+      "title":"Sairaalapalvelut eli laitoshoito (majoitus sairaalassa)",
       "share":0.05400414977
     },{
-      "title":"Yleiset terveydenhuoltopalvelut (Y)",
-      "share":0.0002284278454
+      "title":"Lääkkeet, lääkintälaitteet ja välineet",
+      "share":0.01332495765
     },{
       "title":"Terveydenhuoltoalan tutkimus ja kehittäminen",
       "share":0.00143719186
     },{
       "title":"Terveydenhuolto, muualla luokittelematon",
       "share":0.000780461805
+    },{
+      "title":"Yleiset terveydenhuoltopalvelut, (mm. koulu- ja työterveydenhuolto)",
+      "share":0.0002284278454
     }]
   },{
     "title":"Koulutus",
     "share":0.1150039023,
     "subcategories":[{
-      "title":"Esiasteen ja alemman perusasteen koulutus (Y)",
-      "share":0.02486056384
-    },{
-      "title":"Ylemmän perusasteen ja keskiasteen koulutus (Y)",
+      "title":"Ylemmän perusasteen (luokat 7–10) ja keskiasteen (lukio, ammattikoulu) koulutus",
       "share":0.05257647574
     },{
-      "title":"Korkea-asteen koulutus (Y)",
+      "title":"Korkea-asteen koulutus (yliopistot, ammattikorkeakoulut ml. opintotuki)",
       "share":0.03125654351
     },{
-      "title":"Tutkintoon johtamaton koulutus (Y)",
+      "title":"Esiasteen (3–6-vuotiaiden) ja alemman perusasteen (peruskoulun luokat 1–6) koulutus",
+      "share":0.02486056384
+    },{
+      "title":"Tutkintoon johtamaton koulutus (mm. täydennyskoulutus, kielikurssit)",
       "share":0.004768431272
     },{
-      "title":"Koulutuksen tukipalvelut opiskelijoille (Y)",
+      "title":"Koulutus, muualla luokittelematon",
+      "share":0.0009137113814
+    },{
+      "title":"Koulutuksen tukipalvelut opiskelijoille (mm. YTHS, ateriatuet)",
       "share":0.0004473378638
     },{
       "title":"Koulutuksen tutkimus ja kehittäminen",
       "share":0.0001808387109
-    },{
-      "title":"Koulutus, muualla luokittelematon",
-      "share":0.0009137113814
     }]
   },{
     "title":"Yleinen julkishallinto",
     "share":0.1140806731,
     "subcategories":[{
-      "title":"Toimeenpano- ja lainsäädäntöelimet, finanssi- ja veroasiat, ulkoasiainhallinto",
-      "share":0.02960995945
-    },{
-      "title":"Taloudellinen apu ulkomaille",
-      "share":0.008975310757
-    },{
       "title":"Yleiset hallintopalvelut",
       "share":0.03999390859
     },{
-      "title":"Perustutkimus",
+      "title":"Toimeenpano- ja lainsäädäntöelimet, finanssi- ja veroasiat, ulkoasiainhallinto",
+      "share":0.02960995945
+    },{
+      "title":"Julkisen velan korkomenot",
+      "share":0.02534597301
+    },{
+      "title":"Perustutkimus (ml. avustukset, lainat ja tuet)",
       "share":0.009755772562
+    },{
+      "title":"Kehitysyhteistyö, taloudellinen apu ulkomaille",
+      "share":0.008975310757
     },{
       "title":"Yleisen julkishallinnon tutkimus ja kehittäminen",
       "share":0.0002950526336
     },{
-      "title":"Muut yleisen julkishallinnon palvelut",
+      "title":"Muut yleisen julkishallinnon palvelut (mm. vaalien järjestäminen)",
       "share":0.0001046960958
-    },{
-      "title":"Julkisen velan hoitoon liittyvät taloustoimet",
-      "share":0.02534597301
     }]
   },{
     "title":"Elinkeinoelämän edistäminen",
     "share":0.07892182057,
     "subcategories":[{
-      "title":"Yleiset talouteen ja kauppaan liittyvät tehtävät sekä työvoimapalvelut",
-      "share":0.01109778615
+      "title":"Tie-, raide-, vesi- ja ilmaliikenne, ml. rakentaminen",
+      "share":0.04115508347
     },{
-      "title":"Maa, metsä, kala - ja riistatalous",
+      "title":"Maa, metsä, kala- ja riistatalous",
       "share":0.01401975901
     },{
-      "title":"Polttoaine- ja energiahuolto",
-      "share":0.002874383721
+      "title":"Yleiset talouteen ja kauppaan liittyvät tehtävät ja yritystuet sekä työvoimapalvelut",
+      "share":0.01109778615
+    },{
+      "title":"Elinkeinoelämän tutkimus ja kehittäminen",
+      "share":0.006405497497
     },{
       "title":"Kaivostoiminta, teollisuus ja rakentaminen",
       "share":0.00342641768
     },{
-      "title":"Liikenne",
-      "share":0.04115508347
-    },{
-      "title":"Elinkeinoelämän tutkimus ja kehittäminen",
-      "share":0.006405497497
+      "title":"Polttoaine- ja energiahuolto",
+      "share":0.002874383721
     }]
   },{
     "title":"Vapaa-aika, kulttuuri ja uskonto",
     "share":0.02614547047,
     "subcategories":[{
-      "title":"Virkistys- ja urheilupalvelut (Y)",
-      "share":0.008071117203
-    },{
-      "title":"Kulttuuripalvelut (Y)",
+      "title":"Kulttuuripalvelut (mm. kirjastot, teatterit, museot, avustukset)",
       "share":0.009860468658
     },{
-      "title":"Radio, televisio- ja julkaisutoiminta",
+      "title":"Virkistys- ja urheilupalvelut (mm. urheilukentät, avustukset)",
+      "share":0.008071117203
+    },{
+      "title":"Radio, televisio- ja julkaisutoiminta (mm. Yleisradio, elokuvatarkastamo)",
       "share":0.004806502579
     },{
-      "title":"Uskonnollisten ja aatteellisten yhteisöjen tukeminen",
+      "title":"Uskonnollisten ja aatteellisten yhteisöjen tukeminen (mm. järjestöjen ja puoluiden avustukset)",
       "share":0.003378828546
     },{
       "title":"Vapaa-ajan, kulttuurin ja uskonnon tutkimus ja kehittäminen",
@@ -467,7 +467,7 @@
       "title":"Sotilaspuolustus",
       "share":0.02327108675
     },{
-      "title":"Sotilasapu ulkomaille",
+      "title":"Sotilasapu ulkomaille (rauhanturvaaminen, Nato-kumppanuus)",
       "share":0.0011326214
     },{
       "title":"Puolustustoiminnan tutkimus ja kehittäminen",
@@ -492,21 +492,21 @@
       "title":"Vankilalaitos",
       "share":0.00186549407
     },{
-      "title":"Yleiseen järjestykseen ja turvallisuuteen liittyvä tutkimus ja kehittäminen",
-      "share":0.00001903565378
-    },{
       "title":"Yleinen järjestys ja turvallisuus, muualla luokittelematon",
       "share":0.001208764015
+    },{
+      "title":"Yleiseen järjestykseen ja turvallisuuteen liittyvä tutkimus ja kehittäminen",
+      "share":0.00001903565378
     }]
   },{
     "title":"Asuminen ja yhdyskunnat",
     "share":0.003454971161,
     "subcategories":[{
-      "title":"Asuinolojen kehittäminen",
-      "share":0.0008566044201
-    },{
-      "title":"Yhdyskuntakehitys",
+      "title":"Yhdyskuntakehitys (mm. kaavoitus)",
       "share":0.003340757238
+    },{
+      "title":"Asuinolojen kehittäminen (mm. korjausavustukset)",
+      "share":0.0008566044201
     },{
       "title":"Vesihuolto",
       "share":0.0001618030571
@@ -515,20 +515,20 @@
     "title":"Ympäristönsuojelu",
     "share":0.003312203758,
     "subcategories":[{
-      "title":"Jätehuolto",
-      "share":0.0001332495765
+      "title":"Ympäristön suojelu, muualla luokittelematon",
+      "share":0.001094550092
     },{
-      "title":"Ympäristön pilaantumisen torjunta",
+      "title":"Ympäristön pilaantumisen torjunta (mm. vesistöjen kunnostus)",
       "share":0.0008470865932
     },{
-      "title":"Biologisen monimuotoisuuden ja maisemansuojelu",
+      "title":"Biologisen monimuotoisuuden ja maisemansuojelu (mm. luonnonpuistot)",
       "share":0.0007709439781
     },{
       "title":"Ympäristönsuojelun tutkimus ja kehittäminen",
       "share":0.0004663735176
     },{
-      "title":"Ympäristön suojelu, muualla luokittelematon",
-      "share":0.001094550092
+      "title":"Jätehuolto",
+      "share":0.0001332495765
     }]
   }]
 }

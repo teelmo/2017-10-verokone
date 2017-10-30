@@ -1,7 +1,7 @@
 .plus-app.plus-app-2017-10-verolaskuri {
   /* For old browsers */
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   @media all and (-webkit-min-device-pixel-ratio: 0) {
     select,
     textarea,
@@ -20,21 +20,24 @@
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    font-size: .875em;
+    font-size: 18px;
     font-weight: 300;
-    height: 31px;
-    line-height: 31px;
+    height: 40px;
+    line-height: 40px;
     margin-top: 10px;
-    padding: 0 20px;
+    padding: 0 35px;
     width: auto;
     &.active {
       background-color: #11b579;
       border-radius: 2px;
       cursor: pointer;
+      &:hover {
+        opacity: 0.8;
+      }
     }
   }
   .form_container {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     .input_container {
       position: relative;
       margin: 20px 0;
@@ -76,7 +79,8 @@
   }
   .result_container {
     h1,
-    h3 {
+    h3,
+    h4 {
       margin-bottom: 20px;
       font-weight: bold;
     }
@@ -88,6 +92,40 @@
     h3 {
       font-size: 26px;
     }
+    .result_wrapper {
+      .clearfix;
+      align-items: center;
+      display: flex;
+      font-size: 20px;
+      line-height: 20px;
+      .label {
+        box-sizing: border-box;
+        display: inline-block;
+        padding: 5px 0 5px;
+        width: 100%;
+      }
+      .value {
+        float: right;
+        text-align: right;
+        width: 100px;
+      }
+      &.start {
+        margin-bottom: 15px;
+        .label {
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+      }
+      &.total {
+        border-top: 1px solid #000;
+        margin-top: 15px;
+        padding-top: 15px;
+        .label {
+          font-weight: 600;
+          text-transform: uppercase;
+        }
+      }
+    }
     .value {
       font-weight: bold;
     }
@@ -98,6 +136,7 @@
     }
     .more_container {
       margin-bottom: 20px;
+      display: none;
     }
     .meta_container {
       display: none;
@@ -133,50 +172,58 @@
         }
       }
     }
-    .spending_category_container {
-      border-top: 1px solid #000;
-      &:last-child {
-        border-bottom: 1px solid #000;
-      }
-      >.category_container {
-        cursor: pointer;
-        font-weight: bold;
-        .category_name,
-        .category_share {
+    .spendings_container {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+      margin-bottom: 10px;
+      margin-top: 40px;
+      .spending_category_container {
+        &:last-child {
+        }
+        >.category_container {
+          cursor: pointer;
           font-weight: bold;
+          &:hover {
+            background-color: #f1f1f1;
+          }
+          .category_name,
+          .category_share {
+            font-weight: bold;
+          }
         }
-      }
-      .category_container {
-        align-items: center;
-        border-color: #000;
-        border-style: solid;
-        border-width: 0 1px 0 1px;
-        box-sizing: border-box;
-        display: flex;
-        height: 45px;
-        position: relative;
-        width: 100%;
-        .category_name {
-          display: inline-block;
-          padding-left: 5px;
-          width: 100%;
-        }
-        .category_share {
-          padding-right: 5px;
-          text-align: right;
-          width: 100px;
-        }
-      }
-      .spending_sub_category_container {
-        display: none;
         .category_container {
-          border-top: 1px solid #ccc;
+          align-items: center;
+          border-color: rgba(0, 0, 0, 0.7);
+          border-style: solid;
+          border-width: 1px 1px 0 1px;
+          box-sizing: border-box;
+          display: flex;
+          min-height: 45px;
+          position: relative;
+          width: 100%;
           .category_name {
-            padding-left: 20px;
+            box-sizing: border-box; 
+            display: inline-block;
+            padding: 5px 0 5px 5px;
+            width: 100%;
+          }
+          .category_share {
+            padding-right: 5px;
+            text-align: right;
+            width: 100px;
+          }
+        }
+        .spending_sub_category_container {
+          display: none;
+          .category_container {
+            border-top: 1px solid #ccc;
+            .category_name {
+              padding-left: 20px;
+            }
           }
         }
       }
     }
+
     .neighbors_container {
       margin-top: 30px;
       table {
