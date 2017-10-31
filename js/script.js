@@ -18,6 +18,9 @@
       if (location.href.match('dev')) {
         plusApp.path = 'http://dev.yle.fi/2017/' + plusApp.projectName + '/public/';
       }
+      else if (location.href.match('svenska.yle.fi')) {
+        plusApp.path = '//svenska.yle.fi/dataviz/2017/' + plusApp.projectName + '/';
+      }
       else if (location.href.match('yle.fi/plus')) {
         plusApp.path = '//yle.fi/plus/yle/2017/' + plusApp.projectName + '/';
       }
@@ -94,7 +97,7 @@
       $('<h3>Lasketut vähennykset</h3>').appendTo(plusApp.meta);
 
       // Vuositulot.
-      let vuositulot = plusApp.salary * 12;
+      let vuositulot = plusApp.salary * 12.5;
       $('<div class="vuositulot"><span class="label">Vuositulot</span> <span class="value">' + plusApp.formatNr(plusApp.roundNr(vuositulot), 0) + ' €</span></div>').appendTo(plusApp.meta);
       let ansiotulot = vuositulot;
 
@@ -190,15 +193,15 @@
         $('<p>Tulosi ovat niin alhaiset, että et maksa lainkaan veroja.</p>').appendTo(result_container);
       }
       else {
-        let vuositulot = plusApp.salary * 12;
+        let vuositulot = plusApp.salary * 12.5;
         let net_income = vuositulot - tax;
         let percent = ($('.age_input', plus).is(':checked')) ? 0.2024 : 0.2174;
-        let total_tax = tax + net_income * 0.2 + (plusApp.salary * 12) * percent;
+        let total_tax = tax + net_income * 0.2 + (plusApp.salary * 12.5) * percent;
         $('<div class="result_wrapper start"><div class="label">Vuositulosi</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(vuositulot), 0) + '&nbsp;€</div></div>').appendTo(result_container);
         $('<div class="result_wrapper"><div class="label">&bullet; Verot ja maksut bruttopalkasta</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(tax, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
         $('<div class="result_wrapper"><div class="label">&bullet; Arvonlisä- ja valmistevero nettopalkasta</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(net_income * 0.2, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
-        $('<div class="result_wrapper"><div class="label">&bullet; Työnantajasi maksaa</div><div class="value">' + plusApp.formatNr(plusApp.roundNr((plusApp.salary * 12) * percent)) + '&nbsp;€</div></div>').appendTo(result_container);
-        $('<div class="result_wrapper total"><div class="label">Yhteensä yhteiskunnalle</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(total_tax, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
+        $('<div class="result_wrapper"><div class="label">&bullet; Työnantajasi maksaa</div><div class="value">' + plusApp.formatNr(plusApp.roundNr((plusApp.salary * 12.5) * percent)) + '&nbsp;€</div></div>').appendTo(result_container);
+        $('<div class="result_wrapper total"><div class="label">Maksut yhteensä</div><div class="value">' + plusApp.formatNr(plusApp.roundNr(total_tax, 0)) + '&nbsp;€</div></div>').appendTo(result_container);
         // $('<h4>Vuositulosi ovat <strong></strong>.</h4><h3>Palkastasi yhteiskunnalle menee vuodessa <strong></strong><h3><h4>Sinulle jää käteen <strong>' + plusApp.formatNr(plusApp.roundNr(net_income, 0)) + '&nbsp;€</strong>. Käyttäessäsi tämän summan kokonaisuudessaan yhteiskunta kerää  <strong></strong>. Lisäksi työnantajasi maksaa palkkasi perusteella <strong></strong> veronluonteisia sosiaalivakuutusmaksuja.</h4>').appendTo(result_container);
         let tax_lastyear = plusApp.calculateTax(plusApp.data.municipalities[plusApp.municipality_id].tax_percent - plusApp.data.municipalities[plusApp.municipality_id].tax_percent_change);
         let meta = plusApp.meta;
@@ -207,6 +210,7 @@
         // Spendings.
         let spendings_container = $('<div class="spendings_container"></div>').appendTo(result_container);
         $('<h3>Näin yhteiskunta käyttää rahat</h3>').appendTo(spendings_container);
+        $('<p>Valitsemalla kategorian näet tarkemmat tiedot</p>').appendTo(spendings_container);
         $.each(plusApp.data.spending_categories, (i, spending_category) => {
           let spending_category_container = $('<div class="spending_category_container"></div>').appendTo(spendings_container);
           $('<div class="category_container main" data-sub-container=".spending_sub_category_container_' + i + '"><div class="category_name">' + spending_category.title + '</div><div class="category_share">' + plusApp.formatNr(plusApp.roundNr(spending_category.share * total_tax, 0)) + '&nbsp;€</div></div>').appendTo(spending_category_container);
